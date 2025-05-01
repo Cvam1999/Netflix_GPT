@@ -44,6 +44,7 @@ const Header = () => {
         src= {Logo_Netfilx}
         alt="Netflix Logo"
       />
+       <p className="text-white">{user?.displayName}</p>
       {user && (
         <div className="flex">
           <img
@@ -57,7 +58,9 @@ const Header = () => {
           >
             Sign Out
           </button>
+         
         </div>
+        
       )}
     </div>
     

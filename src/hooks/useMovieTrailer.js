@@ -9,16 +9,18 @@ const useMovieTrailer = (movieId) => {
   // fetch trailer videos from TMDB API and dispatch them to the Redux store
   const getMovieVidoes = async () => {
     const data = await fetch(
-        "https://api.themoviedb.org/3/movie/"+movieId+"/videos?language=en-US",
+      "https://api.themoviedb.org/3/movie/" +
+        movieId +
+        "/videos?language=en-US",
       API_OPTIONS
     );
     const json = await data.json();
-    //console.log(json.results);
+
     const filterTrailer = json.results.filter(
-      (video) => video.type === "Teaser"
+      (video) => video.type === "Trailer"
     );
     const trailer = filterTrailer.length ? filterTrailer[0] : json.results[0];
-    //console.log(trailer);
+
     dispatch(addTrailer(trailer));
   };
   useEffect(() => {
